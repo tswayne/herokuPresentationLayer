@@ -2,6 +2,12 @@
 $name = $_GET['name'] == null ? 'RAY' : strtoupper($_GET['name']);
 $ch = curl_init();  
  
+if (getenv('PERSON_API')) {
+	$baseUrl='http://' . getenv("CLEARDB_DATABASE_URL");
+} else {
+	$baseUrl='localhost:8080';
+}
+
 curl_setopt($ch,CURLOPT_URL,'http://localhost:8080?name=' . $name);
 curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);  
 $response=curl_exec($ch); 
