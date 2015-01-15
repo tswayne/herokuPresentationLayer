@@ -8,8 +8,10 @@ if (getenv('PERSON_API')) {
 }
 
 $ch = curl_init();  
- 
-curl_setopt($ch,CURLOPT_URL,'http://localhost:8080?name=' . $name);
+
+$baseUrl='http://heroku-php-demo-api.herokuapp.com';
+
+curl_setopt($ch,CURLOPT_URL,$baseUrl . '?name=' . $name);
 curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);  
 $response=curl_exec($ch);
 curl_setopt($ch,CURLOPT_URL,'http://localhost:8081');
