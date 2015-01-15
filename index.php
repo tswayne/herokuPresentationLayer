@@ -1,7 +1,7 @@
 <?php
 $name = $_GET['name'] == null ? 'RAY' : strtoupper($_GET['name']);
 $ch = curl_init();  
- 
+echo getenv('PERSON_API'); 
 if (getenv('PERSON_API')) {
 	$baseUrl='http://' . getenv("PERSON_API");
 } else {
