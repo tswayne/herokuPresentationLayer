@@ -1,14 +1,10 @@
 <?php
 $name = $_GET['name'] == null ? 'RAY' : strtoupper($_GET['name']);
 $ch = curl_init();  
-echo getenv('PERSON_API'); 
-if (getenv('PERSON_API')) {
-	$baseUrl='http://' . getenv("PERSON_API");
-} else {
-	$baseUrl='localhost:8080';
-}
 
-curl_setopt($ch,CURLOPT_URL,'http://localhost:8080?name=' . $name);
+$baseUrl='http://heroku-php-demo-api.herokuapp.com'
+
+curl_setopt($ch,CURLOPT_URL,$baseUrl . '?name=' . $name);
 curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);  
 $response=curl_exec($ch); 
 curl_close($ch);
