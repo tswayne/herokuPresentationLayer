@@ -2,7 +2,7 @@
 $name = $_GET['name'] == null ? 'RAY' : strtoupper($_GET['name']);
 
 if (getenv('PERSON_API')) {
-	$baseUrl='http://' . getenv("CLEARDB_DATABASE_URL");	
+	$baseUrl='http://' . getenv("PERSON_API");	
 } else {
 	$baseUrl='localhost:8080';
 }
