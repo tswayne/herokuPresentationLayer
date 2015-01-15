@@ -2,7 +2,7 @@
 $name = $_GET['name'] == null ? 'RAY' : strtoupper($_GET['name']);
 $ch = curl_init();  
 
-$baseUrl='http://heroku-php-demo-api.herokuapp.com'
+$baseUrl='http://heroku-php-demo-api.herokuapp.com';
 
 curl_setopt($ch,CURLOPT_URL,$baseUrl . '?name=' . $name);
 curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);  
