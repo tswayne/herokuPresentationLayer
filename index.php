@@ -4,9 +4,11 @@ $ch = curl_init();
  
 curl_setopt($ch,CURLOPT_URL,'http://localhost:8080?name=' . $name);
 curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);  
-$response=curl_exec($ch); 
+$response=curl_exec($ch);
+curl_setopt($ch,CURLOPT_URL,'http://localhost:8081');
+curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+$numbers=json_decode(curl_exec($ch), true);
 curl_close($ch);
-
 $person = json_decode($response)->person;
 ?>
 <!DOCTYPE html>
@@ -33,10 +35,15 @@ $person = json_decode($response)->person;
       <dl>
 	  	<dt>Age</dt>
 	  	<dd><?php echo $person->age?></dd>
-	  	<dt>Job</dt>
+	  	<dt style="padding-top: 10px">Job</dt>
 	  	<dd><?php echo $person->job?></dd>
-	  	<dt>Bio</dt>
+	  	<dt style="padding-top: 10px">Bio</dt>
 	  	<dd><?php echo $person->description?></dd>
+	  	<dt style="padding-top: 10px">Lucky Numbers</dt>
+	  	<dd><?php foreach($numbers as $number)
+	  	echo "$number  "; 
+	  	?>
+	  	</dd>
 	  </dl>
     </div>   
   </body>
